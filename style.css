@@ -128,7 +128,7 @@ header {
     display: flex;
     flex: 1;
     margin: 0 2rem;
-    max-width: 500px;
+    max-width: 300px;
 }
 
 #search-input {
@@ -1749,4 +1749,7 @@ footer {
     .social-links {
         justify-content: center;
     }
+}
+#cart-count {
+  opacity: 0;
 }

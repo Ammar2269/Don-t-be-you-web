@@ -805,3 +805,86 @@ window.addEventListener('load', () => {
     animateOnScroll();
     initPage();
 });
+// Mobile Menu Functionality
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+const mobileWishlistBtn = document.getElementById('mobile-wishlist-btn');
+const mobileCartBtn = document.getElementById('mobile-cart-btn');
+const mobileCartCount = document.getElementById('mobile-cart-count');
+
+// Toggle mobile menu
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('show');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    document.body.style.overflow = '';
+});
+
+// Close menu when clicking on a link
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.dataset.page;
+        showPage(page);
+        mobileMenu.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+});
+
+// Mobile theme toggle
+mobileThemeToggle.addEventListener('click', () => {
+    themeToggle.click(); // Trigger the same function as desktop theme toggle
+});
+
+// Mobile language toggle
+mobileLangToggle.addEventListener('click', () => {
+    langToggle.click(); // Trigger the same function as desktop language toggle
+});
+
+// Mobile wishlist button
+mobileWishlistBtn.addEventListener('click', () => {
+    wishlistBtn.click(); // Trigger the same function as desktop wishlist button
+    mobileMenu.classList.remove('show');
+    document.body.style.overflow = '';
+});
+
+// Mobile cart button
+mobileCartBtn.addEventListener('click', () => {
+    cartBtn.click(); // Trigger the same function as desktop cart button
+    mobileMenu.classList.remove('show');
+    document.body.style.overflow = '';
+});
+
+// Update mobile cart count when cart changes
+function updateCart() {
+    // ... existing cart update code ...
+    
+    // Update mobile cart count
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    mobileCartCount.textContent = `(${totalItems})`;
+}
+
+// Learn More Button Functionality
+const learnMoreBtn = document.getElementById('learn-more-btn');
+const backFromLearnMore = document.getElementById('back-from-learn-more');
+const learnMoreSection = document.getElementById('learn-more-section');
+const homePage = document.getElementById('home-page');
+
+learnMoreBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    homePage.style.display = 'none';
+    learnMoreSection.style.display = 'block';
+});
+
+backFromLearnMore.addEventListener('click', (e) => {
+    e.preventDefault();
+    learnMoreSection.style.display = 'none';
+    homePage.style.display = 'block';
+});

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Be You | Online Bookstore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=29LTAdir:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" id="home-link" data-en="Don't <span>Be</span> You" data-ar="لا تكن <span>أنت</span>">Don't <span>Be</span> You</a>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" 
+                   data-en="Search for books..." data-ar="ابحث عن الكتب...">
+            <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" id="home-nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#" class="nav-link" id="books-nav-link" data-en="Books" data-ar="الكتب">Books</a></li>
+                <li><a href="#" class="nav-link" id="faq-nav-link" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+                <li><a href="#" class="nav-link" id="contact-nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                <li><a href="#" id="wishlist-btn" class="nav-link" data-en="Wishlist" data-ar="المفضلة">Wishlist</a></li>
+                <li><a href="#" id="cart-btn" class="nav-link" data-en="Cart" data-ar="عربة التسوق">Cart <span id="cart-count">(0)</span></a></li>
+            </ul>
+        </nav>
+        
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <button class="lang-toggle" id="lang-toggle">
+            <span id="lang-text">EN</span>
+            <span>🌐</span>
+        </button>
+        
+        <div class="user-avatar" id="user-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        
+        <div class="user-menu" id="user-menu">
+            <a href="#" id="profile-link" data-en="My Profile" data-ar="ملفي الشخصي">My Profile</a>
+            <a href="#" id="orders-link" data-en="My Orders" data-ar="طلباتي">My Orders</a>
+            <hr>
+            <a href="#" id="logout-link" data-en="Logout" data-ar="تسجيل الخروج">Logout</a>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section class="home-page" id="home-page">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title" data-en="Discover Your Next Favorite Book" data-ar="اكتشف كتابك المفضل القادم">Discover Your Next Favorite Book</h1>
+                <p class="hero-text" data-en="Explore our curated collection of books that will inspire, educate, and entertain you. Find your next adventure today." data-ar="استكشف مجموعتنا المختارة من الكتب التي ستلهمك وتعلمك وتسلّيك. ابحث عن مغامرتك القادمة اليوم.">Explore our curated collection of books that will inspire, educate, and entertain you. Find your next adventure today.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn" id="browse-books-btn" data-en="Browse Books" data-ar="تصفح الكتب">Browse Books</a>
+                    <a href="#" class="btn btn-outline" id="learn-more-btn" data-en="Learn More" data-ar="معرفة المزيد">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-bg"></div>
+            <div class="hero-books">
+            </div>
+        </section>
+
+        <div class="main-content">
+            <div class="content-area">
+                <div class="loader" id="loader"></div>
+                
+                <div class="book-detail active" id="default-book">
+                    <div class="book-detail-content">
+                        <div class="book-detail-cover">
+                            <img src="https://i.imgur.com/JZxXQzC.png" alt="Featured Book">
+                        </div>
+                        <div class="book-detail-info">
+                            <h2 class="book-detail-title" data-en="Featured Selection" data-ar="اختيار مميز">Featured Selection</h2>
+                            <p class="book-detail-author" data-en="Discover our collection" data-ar="اكتشف مجموعتنا">Discover our collection</p>
+                            <p class="book-detail-price">$0.00</p>
+                            <p class="book-detail-description" data-en="Click on any book from the sidebar to view its details here. Browse our carefully selected titles and find your next favorite read." data-ar="انقر على أي كتاب من الشريط الجانبي لعرض تفاصيله هنا. تصفح عناويننا المختارة بعناية وابحث عن قراءتك المفضلة التالية.">Click on any book from the sidebar to view its details here. Browse our carefully selected titles and find your next favorite read.</p>
+                            <button class="btn book-detail-btn" id="browse-all-btn" data-en="Browse All Books" data-ar="تصفح جميع الكتب">Browse All Books</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book details will be shown here when a book is clicked -->
+                <div class="book-detail" id="book-1">
+                    <div class="book-detail-content">
+                        <div class="book-detail-cover">
+                            <img src="https://picsum.photos/300/450?random=1" alt="Book Cover">
+                            <div class="book-dimensions">
+                                <span>Height: 8.4"</span>
+                                <span>Width: 5.5"</span>
+                                <span>Depth: 1.2"</span>
+                            </div>
+                        </div>
+                        
+                        <div class="book-detail-info">
+                            <h2 class="book-detail-title" data-en="The Silent Patient" data-ar="المريض الصامت">The Silent Patient</h2>
+                            <p class="book-detail-author" data-en="by Alex Michaelides" data-ar="أليكس مايكليدس">by Alex Michaelides</p>
+                            <p class="book-detail-price">$12.99</p>
+                            <p class="book-detail-description" data-en="Alicia Berenson's life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London's most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word." data-ar="حياة أليشيا بيرينسون تبدو مثالية. رسامة شهيرة متزوجة من مصور أزياء مطلوب، تعيش في منزل رائع بنوافذ كبيرة تطل على حديقة في واحدة من أكثر المناطق المرغوبة في لندن. في إحدى الأمسيات، يعود زوجها غابرييل متأخرًا من جلسة تصوير أزياء، فتطلق أليشيا النار عليه خمس مرات في وجهه، ثم لا تنطق بكلمة أخرى بعد ذلك.">Alicia Berenson's life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London's most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word.</p>
+                            <button class="btn book-detail-btn add-to-cart-detail" data-id="1" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <div class="book-detail" id="book-2">
+                    <div class="book-detail-content">
+                        <div class="book-detail-cover">
+                            <img src="https://picsum.photos/300/450?random=2" alt="Book Cover">
+                            <div class="book-dimensions">
+                                <span>Height: 8.6"</span>
+                                <span>Width: 5.8"</span>
+                                <span>Depth: 1.5"</span>
+                            </div>
+                        </div>
+                        <div class="book-detail-info">
+                            <h2 class="book-detail-title" data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</h2>
+                            <p class="book-detail-author" data-en="by James Clear" data-ar="جيمس كلير">by James Clear</p>
+                            <p class="book-detail-price">$14.99</p>
+                            <p class="book-detail-description" data-en="No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results." data-ar="بغض النظر عن أهدافك، يقدم كتاب العادات الذرية إطارًا مثبتًا للتحسن كل يوم. جيمس كلير، أحد الخبراء الرائدين في العالم في تكوين العادات، يكشف عن استراتيجيات عملية ستعلمك بالضبط كيفية تكوين عادات جيدة، وكسر العادات السيئة، وإتقان السلوكيات الصغيرة التي تؤدي إلى نتائج رائعة.">No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.</p>
+                            <button class="btn book-detail-btn add-to-cart-detail" data-id="2" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="book-detail" id="book-3">
+                    <div class="book-detail-content">
+                        <div class="book-detail-cover">
+                            <img src="https://picsum.photos/300/450?random=3" alt="Book Cover">
+                            <div class="book-dimensions">
+                                <span>Height: 7.4"</span>
+                                <span>Width: 6.5"</span>
+                                <span>Depth: 2.2"</span>
+                            </div>
+                        </div>
+                        <div class="book-detail-info">
+                            <h2 class="book-detail-title" data-en="Educated" data-ar="متعلمة">Educated</h2>
+                            <p class="book-detail-author" data-en="by Tara Westover" data-ar="تارا ويستوفر">by Tara Westover</p>
+                            <p class="book-detail-price">$13.99</p>
+                            <p class="book-detail-description" data-en="Tara Westover was seventeen the first time she set foot in a classroom. Born to survivalists in the mountains of Idaho, she prepared for the end of the world by stockpiling home-canned peaches and sleeping with her 'head-for-the-hills bag'. In the summer she stewed herbs for her mother, a midwife and healer, and in the winter she salvaged in her father's junkyard." data-ar="كانت تارا ويستوفر في السابعة عشرة من عمرها عندما وطأت قدمها الفصل الدراسي لأول مرة. ولدت لعائلة من المؤمنين بالبقاء على قيد الحياة في جبال أيداهو، كانت تستعد لنهاية العالم بتخزين الخوخ المعلب منزليًا والنوم مع 'حقيبة الهروب إلى التلال'. في الصيف كانت تطبخ الأعشاب لأمها، التي كانت قابلة ومعالجة، وفي الشتاء كانت تعمل في ساحة خردة والدها.">Tara Westover was seventeen the first time she set foot in a classroom. Born to survivalists in the mountains of Idaho, she prepared for the end of the world by stockpiling home-canned peaches and sleeping with her 'head-for-the-hills bag'. In the summer she stewed herbs for her mother, a midwife and healer, and in the winter she salvaged in her father's junkyard.</p>
+                            <button class="btn book-detail-btn add-to-cart-detail" data-id="3" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="book-detail" id="book-4">
+                    <div class="book-detail-content">
+                        <div class="book-detail-cover">
+                            <img src="https://picsum.photos/300/450?random=4" alt="Book Cover">
+                            <div class="book-dimensions">
+                                <span>Height: 8.1"</span>
+                                <span>Width: 5.8"</span>
+                                <span>Depth: 1.6"</span>
+                            </div>
+                        </div>
+                        <div class="book-detail-info">
+                            <h2 class="book-detail-title" data-en="The Midnight Library" data-ar="مكتبة منتصف الليل">The Midnight Library</h2>
+                            <p class="book-detail-author" data-en="by Matt Haig" data-ar="مات هيغ">by Matt Haig</p>
+                            <p class="book-detail-price">$11.99</p>
+                            <p class="book-detail-description" data-en="Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived. To see how things would be if you had made other choices... Would you have done anything different, if you had the chance to undo your regrets?" data-ar="بين الحياة والموت توجد مكتبة، وداخل تلك المكتبة، تمتد الرفوف إلى الأبد. كل كتاب يوفر فرصة لتجربة حياة أخرى كنت قد تعيشها. لترى كيف ستكون الأمور إذا اتخذت خيارات أخرى... هل كنت ستفعل أي شيء مختلف، إذا أتيحت لك الفرصة لإلغاء ندمك؟">Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived. To see how things would be if you had made other choices... Would you have done anything different, if you had the chance to undo your regrets?</p>
+                            <button class="btn book-detail-btn add-to-cart-detail" data-id="4" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <aside class="featured-sidebar">
+                <h2 class="section-title" data-en="Featured Books" data-ar="كتب مميزة">Featured Books</h2>
+                
+                <!-- Categories Filter -->
+                <div class="categories-filter">
+                    <h3 class="categories-title" data-en="Categories" data-ar="الفئات">Categories</h3>
+                    <div class="category-btns">
+                        <button class="category-btn active" data-category="all" data-en="All" data-ar="الكل">All</button>
+                        <button class="category-btn" data-category="fiction" data-en="Fiction" data-ar="خيال">Fiction</button>
+                        <button class="category-btn" data-category="non-fiction" data-en="Non-Fiction" data-ar="غير خيال">Non-Fiction</button>
+                    </div>
+                </div>
+                
+                <div class="books-list">
+                    <div class="book-card" data-id="1" data-category="fiction">
+                        <button class="wishlist-btn" data-id="1"><i class="far fa-heart"></i></button>
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/70/100?random=5" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title" data-en="The Silent Patient" data-ar="المريض الصامت">The Silent Patient</h3>
+                            <p class="book-author" data-en="by Alex Michaelides" data-ar="أليكس مايكليدس">by Alex Michaelides</p>
+                            <div class="book-price">
+                                <span class="price">$12.99</span>
+                                <button class="add-to-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-id="2" data-category="non-fiction">
+                        <button class="wishlist-btn" data-id="2"><i class="far fa-heart"></i></button>
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/70/100?random=6" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title" data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</h3>
+                            <p class="book-author" data-en="by James Clear" data-ar="جيمس كلير">by James Clear</p>
+                            <div class="book-price">
+                                <span class="price">$14.99</span>
+                                <button class="add-to-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-id="3" data-category="non-fiction">
+                        <button class="wishlist-btn" data-id="3"><i class="far fa-heart"></i></button>
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/70/100?random=7" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title" data-en="Educated" data-ar="متعلمة">Educated</h3>
+                            <p class="book-author" data-en="by Tara Westover" data-ar="تارا ويستوفر">by Tara Westover</p>
+                            <div class="book-price">
+                                <span class="price">$13.99</span>
+                                <button class="add-to-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-card" data-id="4" data-category="fiction">
+                        <button class="wishlist-btn" data-id="4"><i class="far fa-heart"></i></button>
+                        <div class="book-cover">
+                            <img src="https://picsum.photos/70/100?random=8" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title" data-en="The Midnight Library" data-ar="مكتبة منتصف الليل">The Midnight Library</h3>
+                            <p class="book-author" data-en="by Matt Haig" data-ar="مات هيغ">by Matt Haig</p>
+                            <div class="book-price">
+                                <span class="price">$11.99</span>
+                                <button class="add-to-cart" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Section -->
+                <div class="recently-viewed">
+                    <h2 class="section-title" data-en="Recently Viewed" data-ar="شاهدت مؤخراً">Recently Viewed</h2>
+                    <div class="books-list" id="recently-viewed-list">
+                        <!-- Recently viewed books will be added here dynamically -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Books Page -->
+    <section class="books-page" id="books-page" style="display: none;">
+        <div class="categories-filter">
+            <h3 class="categories-title" data-en="Categories" data-ar="الفئات">Categories</h3>
+            <div class="category-btns">
+                <button class="category-btn active" data-category="all" data-en="All" data-ar="الكل">All</button>
+                <button class="category-btn" data-category="fiction" data-en="Fiction" data-ar="خيال">Fiction</button>
+                <button class="category-btn" data-category="non-fiction" data-en="Non-Fiction" data-ar="غير خيال">Non-Fiction</button>
+            </div>
+        </div>
+
+        <div class="books-grid">
+            <div class="book-card-grid" data-id="1" data-category="fiction">
+                <button class="wishlist-btn" data-id="1"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=9" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="The Silent Patient" data-ar="المريض الصامت">The Silent Patient</h3>
+                    <p class="book-author-grid" data-en="by Alex Michaelides" data-ar="أليكس مايكليدس">by Alex Michaelides</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$12.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="2" data-category="non-fiction">
+                <button class="wishlist-btn" data-id="2"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=10" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="Atomic Habits" data-ar="العادات الذرية">Atomic Habits</h3>
+                    <p class="book-author-grid" data-en="by James Clear" data-ar="جيمس كلير">by James Clear</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$14.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="3" data-category="non-fiction">
+                <button class="wishlist-btn" data-id="3"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=11" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="Educated" data-ar="متعلمة">Educated</h3>
+                    <p class="book-author-grid" data-en="by Tara Westover" data-ar="تارا ويستوفر">by Tara Westover</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$13.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="4" data-category="fiction">
+                <button class="wishlist-btn" data-id="4"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=12" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="The Midnight Library" data-ar="مكتبة منتصف الليل">The Midnight Library</h3>
+                    <p class="book-author-grid" data-en="by Matt Haig" data-ar="مات هيغ">by Matt Haig</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$11.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="5" data-category="fiction">
+                <button class="wishlist-btn" data-id="5"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=13" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="The Alchemist" data-ar="الخيميائي">The Alchemist</h3>
+                    <p class="book-author-grid" data-en="by Paulo Coelho" data-ar="باولو كويلو">by Paulo Coelho</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$10.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="6" data-category="non-fiction">
+                <button class="wishlist-btn" data-id="6"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=14" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="Sapiens" data-ar="سابينز">Sapiens</h3>
+                    <p class="book-author-grid" data-en="by Yuval Noah Harari" data-ar="يوفال نوح هراري">by Yuval Noah Harari</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$15.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="7" data-category="fiction">
+                <button class="wishlist-btn" data-id="7"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=15" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="The Great Gatsby" data-ar="غاتسبي العظيم">The Great Gatsby</h3>
+                    <p class="book-author-grid" data-en="by F. Scott Fitzgerald" data-ar="إف. سكوت فيتزجيرالد">by F. Scott Fitzgerald</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$9.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card-grid" data-id="8" data-category="non-fiction">
+                <button class="wishlist-btn" data-id="8"><i class="far fa-heart"></i></button>
+                <div class="book-cover-grid">
+                    <img src="https://picsum.photos/250/300?random=16" alt="Book Cover">
+                </div>
+                <div class="book-info-grid">
+                    <h3 class="book-title-grid" data-en="Thinking, Fast and Slow" data-ar="التفكير، بسرعة وببطء">Thinking, Fast and Slow</h3>
+                    <p class="book-author-grid" data-en="by Daniel Kahneman" data-ar="دانيال كانيمان">by Daniel Kahneman</p>
+                    <div class="book-price-grid">
+                        <span class="price-grid">$12.99</span>
+                        <button class="add-to-cart-grid" aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Page -->
+    <section class="faq-page" id="faq-page" style="display: none;">
+        <h2 class="section-title" data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" data-en="How do I place an order?" data-ar="كيف يمكنني تقديم طلب؟">
+                How do I place an order? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" data-en="To place an order, simply browse our collection, add items to your cart, and proceed to checkout. You'll need to provide shipping information and payment details to complete your purchase." data-ar="لتقديم طلب، ما عليك سوى تصفح مجموعتنا، وإضافة العناصر إلى سلة التسوق الخاصة بك، والمتابعة إلى الدفع. ستحتاج إلى تقديم معلومات الشحن وتفاصيل الدفع لإكمال عملية الشراء.">
+                To place an order, simply browse our collection, add items to your cart, and proceed to checkout. You'll need to provide shipping information and payment details to complete your purchase.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" data-en="What payment methods do you accept?" data-ar="ما هي طرق الدفع التي تقبلونها؟">
+                What payment methods do you accept? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" data-en="We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. All transactions are secure and encrypted." data-ar="نقبل جميع بطاقات الائتمان الرئيسية (فيزا، ماستركارد، أمريكان إكسبريس)، باي بال، والتحويلات البنكية. جميع المعاملات آمنة ومشفرة.">
+                We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. All transactions are secure and encrypted.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" data-en="How long does shipping take?" data-ar="كم تستغرق عملية الشحن؟">
+                How long does shipping take? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" data-en="Shipping times vary depending on your location. Typically, orders are processed within 1-2 business days and delivered within 3-7 business days for domestic orders. International orders may take 7-14 business days." data-ar="تختلف أوقات الشحن حسب موقعك. عادةً ما تتم معالجة الطلبات خلال يوم إلى يومي عمل ويتم تسليمها خلال 3-7 أيام عمل للطلبات المحلية. قد تستغرق الطلبات الدولية من 7 إلى 14 يوم عمل.">
+                Shipping times vary depending on your location. Typically, orders are processed within 1-2 business days and delivered within 3-7 business days for domestic orders. International orders may take 7-14 business days.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" data-en="Can I return or exchange a book?" data-ar="هل يمكنني إعادة أو استبدال كتاب؟">
+                Can I return or exchange a book? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" data-en="Yes, we accept returns and exchanges within 30 days of purchase. The book must be in its original condition. Please contact our customer service to initiate a return or exchange." data-ar="نعم، نحن نقبل الإرجاع والاستبدال خلال 30 يومًا من تاريخ الشراء. يجب أن يكون الكتاب في حالته الأصلية. يرجى الاتصال بخدمة العملاء لدينا لبدء عملية الإرجاع أو الاستبدال.">
+                Yes, we accept returns and exchanges within 30 days of purchase. The book must be in its original condition. Please contact our customer service to initiate a return or exchange.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" data-en="Do you offer international shipping?" data-ar="هل تقدمون شحنًا دوليًا؟">
+                Do you offer international shipping? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" data-en="Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by destination. You'll see the shipping options and costs during checkout." data-ar="نعم، نقوم بالشحن إلى معظم دول العالم. تختلف تكاليف الشحن وأوقات التسليم حسب الوجهة. سترى خيارات الشحن والتكاليف أثناء عملية الدفع.">
+                Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by destination. You'll see the shipping options and costs during checkout.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="contact-page" id="contact-page" style="display: none;">
+        <h2 class="section-title" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</h2>
+        <p class="contact-text" data-en="Have questions or feedback? We'd love to hear from you!" data-ar="هل لديك أسئلة أو ملاحظات؟ نحن نحب أن نسمع منك!">Have questions or feedback? We'd love to hear from you!</p>
+        
+        <div class="contact-info">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3 class="contact-title" data-en="Email" data-ar="البريد الإلكتروني">Email</h3>
+                <p class="contact-text" data-en="Send us an email and we'll get back to you as soon as possible." data-ar="أرسل لنا بريدًا إلكترونيًا وسنرد عليك في أقرب وقت ممكن.">Send us an email and we'll get back to you as soon as possible.</p>
+                <a href="mailto:contact@dontbeyou.com" class="contact-link">contact@dontbeyou.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3 class="contact-title" data-en="Phone" data-ar="الهاتف">Phone</h3>
+                <p class="contact-text" data-en="Call us during business hours for immediate assistance." data-ar="اتصل بنا خلال ساعات العمل للحصول على مساعدة فورية.">Call us during business hours for immediate assistance.</p>
+                <a href="tel:+1234567890" class="contact-link">+1 (234) 567-890</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="contact-title" data-en="WhatsApp" data-ar="واتساب">WhatsApp</h3>
+                <p class="contact-text" data-en="Chat with us on WhatsApp for quick responses." data-ar="تواصل معنا على واتساب للحصول على ردود سريعة.">Chat with us on WhatsApp for quick responses.</p>
+                <a href="https://wa.me/1234567890" class="contact-link">+1 (234) 567-890</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="contact-title" data-en="Address" data-ar="العنوان">Address</h3>
+                <p class="contact-text" data-en="Visit our physical store if you're in the area." data-ar="قم بزيارة متجرنا الفعلي إذا كنت في المنطقة.">Visit our physical store if you're in the area.</p>
+                <p class="contact-text">123 Book Street, Knowledge City</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Page -->
+    <section class="profile-page" id="profile-page" style="display: none;">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://i.pravatar.cc/150?img=3" alt="User Avatar">
+            </div>
+            <div class="profile-info">
+                <h2 data-en="John Doe" data-ar="جون دو">John Doe</h2>
+                <p data-en="Member since January 2023" data-ar="عضو منذ يناير 2023">Member since January 2023</p>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <h3 data-en="Account Information" data-ar="معلومات الحساب">Account Information</h3>
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="profile-name" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+                    <input type="text" id="profile-name" value="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="profile-email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+                    <input type="email" id="profile-email" value="john.doe@example.com">
+                </div>
+                <button class="auth-btn" data-en="Update Profile" data-ar="تحديث الملف الشخصي">Update Profile</button>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <h3 data-en="Order History" data-ar="سجل الطلبات">Order History</h3>
+            <table class="order-history">
+                <thead>
+                    <tr>
+                        <th data-en="Order #" data-ar="رقم الطلب">Order #</th>
+                        <th data-en="Date" data-ar="التاريخ">Date</th>
+                        <th data-en="Total" data-ar="المجموع">Total</th>
+                        <th data-en="Status" data-ar="الحالة">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1001</td>
+                        <td data-en="March 15, 2023" data-ar="15 مارس 2023">March 15, 2023</td>
+                        <td>$45.98</td>
+                        <td data-en="Delivered" data-ar="تم التوصيل">Delivered</td>
+                    </tr>
+                    <tr>
+                        <td>#982</td>
+                        <td data-en="February 28, 2023" data-ar="28 فبراير 2023">February 28, 2023</td>
+                        <td>$32.50</td>
+                        <td data-en="Delivered" data-ar="تم التوصيل">Delivered</td>
+                    </tr>
+                    <tr>
+                        <td>#876</td>
+                        <td data-en="January 10, 2023" data-ar="10 يناير 2023">January 10, 2023</td>
+                        <td>$27.99</td>
+                        <td data-en="Delivered" data-ar="تم التوصيل">Delivered</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Auth Pages -->
+    <section class="auth-page" id="login-page" style="display: none;">
+        <div class="auth-form">
+            <h2 data-en="Login" data-ar="تسجيل الدخول">Login</h2>
+            <div class="form-group">
+                <label for="login-email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+                <input type="email" id="login-email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="login-password" data-en="Password" data-ar="كلمة المرور">Password</label>
+                <input type="password" id="login-password" placeholder="••••••••">
+            </div>
+            <button class="auth-btn" id="login-btn" data-en="Login" data-ar="تسجيل الدخول">Login</button>
+            <div class="auth-toggle">
+                <span data-en="Don't have an account?" data-ar="ليس لديك حساب؟">Don't have an account?</span>
+                <a href="#" id="show-register" data-en="Register here" data-ar="سجل هنا">Register here</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="auth-page" id="register-page" style="display: none;">
+        <div class="auth-form">
+            <h2 data-en="Register" data-ar="تسجيل">Register</h2>
+            <div class="form-group">
+                <label for="register-name" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+                <input type="text" id="register-name" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="register-email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+                <input type="email" id="register-email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label for="register-password" data-en="Password" data-ar="كلمة المرور">Password</label>
+                <input type="password" id="register-password" placeholder="••••••••">
+            </div>
+            <div class="form-group">
+                <label for="register-confirm" data-en="Confirm Password" data-ar="تأكيد كلمة المرور">Confirm Password</label>
+                <input type="password" id="register-confirm" placeholder="••••••••">
+            </div>
+            <button class="auth-btn" id="register-btn" data-en="Register" data-ar="تسجيل">Register</button>
+            <div class="auth-toggle">
+                <span data-en="Already have an account?" data-ar="هل لديك حساب بالفعل؟">Already have an account?</span>
+                <a href="#" id="show-login" data-en="Login here" data-ar="سجل الدخول هنا">Login here</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-section" id="payment" style="display: none;">
+        <div class="payment-container">
+            <h2 class="payment-title" data-en="Complete Your Purchase" data-ar="أكمل عملية الشراء">Complete Your Purchase</h2>
+            <form class="payment-form">
+                <div class="form-group">
+                    <label for="card-name" data-en="Cardholder Name" data-ar="اسم حامل البطاقة">Cardholder Name</label>
+                    <input type="text" id="card-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number" data-en="Card Number" data-ar="رقم البطاقة">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry" data-en="Expiry Date" data-ar="تاريخ الانتهاء">Expiry Date</label>
+                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv" data-en="CVV" data-ar="رقم التحقق">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="submit" class="payment-btn" data-en="Pay Now" data-ar="ادفع الآن">Pay Now</button>
+            </form>
+            <a href="#" class="back-to-cart" id="back-to-cart" data-en="Back to Cart" data-ar="العودة إلى السلة">Back to Cart</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-en="Customer Service" data-ar="خدمة العملاء">Customer Service</h3>
+                <ul>
+                    <li><a href="#" class="footer-nav-link" id="footer-contact-link" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
+                    <li><a href="#" class="footer-nav-link" id="footer-faq-link" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a></li>
+                    <li><a href="#" data-en="Returns" data-ar="الإرجاع">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-en="About Us" data-ar="معلومات عنا">About Us</h3>
+                <ul>
+                    <li><a href="#" data-en="Our Story" data-ar="قصتنا">Our Story</a></li>
+                    <li><a href="#" data-en="Careers" data-ar="وظائف">Careers</a></li>
+                    <li><a href="#" data-en="Blog" data-ar="مدونة">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-en="Legal" data-ar="قانوني">Legal</h3>
+                <ul>
+                    <li><a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a></li>
+                    <li><a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a></li>
+                    <li><a href="#" data-en="Cookie Policy" data-ar="سياسة ملفات تعريف الارتباط">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        </div>
+        
+        <div class="copyright" data-en="© 2023 Don't Be You. All rights reserved." data-ar="© 2023 لا تكن أنت. جميع الحقوق محفوظة.">© 2023 Don't Be You. All rights reserved.</div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-en="Your Cart" data-ar="سلة التسوق">Your Cart</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            <div class="cart-total">
+                <span data-en="Total:" data-ar="المجموع:">Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="btn checkout-btn" id="checkout-btn" data-en="Proceed to Checkout" data-ar="الانتقال إلى الدفع">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlist-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-en="Your Wishlist" data-ar="قائمة المفضلة">Your Wishlist</h2>
+            <div class="wishlist-items" id="wishlist-items">
+                <!-- Wishlist items will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

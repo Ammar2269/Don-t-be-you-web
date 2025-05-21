@@ -686,6 +686,102 @@
             </div>
         </div>
     </div>
+    <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Be You | Online Bookstore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=29LTAdir:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" id="home-link" data-en="Don't <span>Be</span> You" data-ar="لا تكن <span>أنت</span>">Don't <span>Be</span> You</a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" 
+                       data-en="Search for books..." data-ar="ابحث عن الكتب...">
+                <button id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link" id="home-nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#" class="nav-link" id="books-nav-link" data-en="Books" data-ar="الكتب">Books</a></li>
+                    <li><a href="#" class="nav-link" id="faq-nav-link" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+                    <li><a href="#" class="nav-link" id="contact-nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                    <li><a href="#" id="wishlist-btn" class="nav-link" data-en="Wishlist" data-ar="المفضلة">Wishlist</a></li>
+                    <li><a href="#" id="cart-btn" class="nav-link" data-en="Cart" data-ar="عربة التسوق">Cart <span id="cart-count">(0)</span></a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="lang-toggle" id="lang-toggle">
+                    <span id="lang-text">EN</span>
+                    <span>🌐</span>
+                </button>
+                
+                <div class="user-avatar" id="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="user-menu" id="user-menu">
+            <a href="#" id="profile-link" data-en="My Profile" data-ar="ملفي الشخصي">My Profile</a>
+            <a href="#" id="orders-link" data-en="My Orders" data-ar="طلباتي">My Orders</a>
+            <hr>
+            <a href="#" id="logout-link" data-en="Logout" data-ar="تسجيل الخروج">Logout</a>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="#" class="mobile-nav-link" data-page="home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="books" data-en="Books" data-ar="الكتب">Books</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+            <li><a href="#" class="mobile-nav-link" id="mobile-wishlist-btn" data-en="Wishlist" data-ar="المفضلة">Wishlist</a></li>
+            <li><a href="#" class="mobile-nav-link" id="mobile-cart-btn" data-en="Cart" data-ar="عربة التسوق">Cart <span id="mobile-cart-count">(0)</span></a></li>
+        </ul>
+        <div class="mobile-menu-footer">
+            <button class="mobile-theme-toggle" id="mobile-theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span data-en="Dark Mode" data-ar="الوضع المظلم">Dark Mode</span>
+            </button>
+            <button class="mobile-lang-toggle" id="mobile-lang-toggle">
+                <span data-en="English" data-ar="العربية">English</span>
+                <span>🌐</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Rest of your HTML remains the same -->
+    <!-- ... -->
+
+    <script src="index.js"></script>
+</body>
+</html>
 
     <script src="index.js"></script>
 </body>
